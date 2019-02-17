@@ -8,8 +8,10 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.1/angular.min.js"></script>
+        <script src="js/CompanyJS.js"></script>
     </head>
-    <body ng-controller="ctrlCompany"s>
+    <body ng-controller="ctrlCompany">
         <!--Navbar goes here--> 
         <nav>
             <div class="nav-wrapper #80deea cyan lighten-3">
@@ -30,7 +32,7 @@
                         <div class="row">
                             <div class="input-field col s6">
                                  <i class="material-icons prefix">account_circle</i>
-                                <input id="first_name" type="text" class="validate">
+                                 <input id="first_name" type="text" class="validate" ng-model="company.nameCompany">
                                 <label for="first_name">Nombre</label>
                             </div>
                             <div class="input-field col s6">
@@ -41,18 +43,18 @@
  <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">email</i>
-            <input id="email" type="email" class="validate">
+            <input id="email" type="email" class="validate" ng-model="company.emailCompany">
           <label for="email">Email</label>
           <span class="helper-text" data-error="wrong" data-success="right"></span>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="password" type="password" class="validate">
+            <input id="password" type="password" class="validate" ng-model="company.password">
           <label for="password">Password</label>
         </div>
       </div>
-                        <button class="btn waves-effect waves-light" type="submit" name="action">Guardar
+                        <button class="btn waves-effect waves-light" type="submit" name="action" ng-click="registerCompany()">Guardar
     <i class="material-icons right">send</i>
   </button>
      

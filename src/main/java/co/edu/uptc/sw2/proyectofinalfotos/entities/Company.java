@@ -58,4 +58,8 @@ public class Company {
         this.listProyects = listProyects;
     }
 
+    @Override
+    public String toString() {
+        return "Company{" + "idCompany=" + idCompany + ", nameCompany=" + nameCompany + ", emailCompany=" + emailCompany + ", password=" + password + ", listProyects=" + listProyects + '}';
+    }
 }
