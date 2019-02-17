@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -9,8 +9,10 @@
         <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link href="css/materialize-social.css" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.1/angular.min.js"></script>
+        <script src="js/IndexJS.js"></script>
     </head>
-    <body>
+    <body ng-controller="ctrlIndex">
         <!--Navbar goes here--> 
         <nav>
             <div class="nav-wrapper #80deea cyan lighten-3">
@@ -47,7 +49,7 @@
                                     <input type="checkbox" id="remember">
                                 </div><br>
                                 <div class="form-field center-align">
-                                    <button class="btn-large #80deea cyan lighten-3"> Ingresar </button>
+                                    <button class="btn-large #80deea cyan lighten-3" ng-click="login()"> Ingresar </button>
                                 </div><br>
                             </div>
                         </div>
