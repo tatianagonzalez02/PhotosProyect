@@ -6,7 +6,7 @@ import javax.persistence.Id;
 
 /**
  *
- * @author Karol Alfonso
+ * @author Karol Alfonso, fredy gamba...
  */
 @Entity
 public class Company {
