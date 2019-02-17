@@ -21,6 +21,7 @@ public class CompanyLogic {
     private CompanyDAO companyDAO;
     
     public boolean addCompany(Company company){
+        System.out.println(company.getEmailCompany());
         if (companyDAO.getCompany(company.getEmailCompany()) == null) {
             companyDAO.addCompany(company);
             return true;
@@ -28,4 +29,5 @@ public class CompanyLogic {
             return false;
         }
     }
+    
 }

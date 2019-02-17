@@ -31,4 +31,7 @@ public class CompanyDAO {
             return null;
         }
     }
+
+    public void getCompany(String email, String password) {
+    }
 }

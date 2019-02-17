@@ -6,7 +6,7 @@ app.controller("ctrlCompany", function($scope, $http) {
    
     $scope.registerCompany = function(){
         if ($scope.company !== null){
-            $http.post("./webresources/CompanyService/", $scope.company)
+            $http.post("./webresources/CompanyService/register", $scope.company)
             .then(function(response) {
                     if (response.data) {
                         alert("Tu cuenta a sido creada!");
