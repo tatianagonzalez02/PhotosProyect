@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+        <title>Registro</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.1/angular.min.js"></script>
+        <script src="js/CompanyJS.js"></script>
+    </head>
+    <body ng-controller="ctrlCompany">
+        <!--Navbar goes here--> 
+        <nav>
+            <div class="nav-wrapper #80deea cyan lighten-3">
+                <a href="#" class="brand-logo">
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="registro.html">Registrarse</a></li>
+                        <li><a href="index.html" ng-click="localStorage.clear()">Cerrar Sesion</a></li>
+                    </ul>
+            </div>
+        </nav>
+        <!--Page Layout here--> 
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <h3 align="center">Registra tu empresa</h3>
+                    <form action="#">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                 <i class="material-icons prefix">account_circle</i>
+                                 <input id="first_name" type="text" class="validate" ng-model="company.nameCompany">
+                                <label for="first_name">Nombre</label>
+                            </div>
+                           </div>
+ <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">email</i>
+            <input id="email" type="email" class="validate" ng-model="company.emailCompany">
+          <label for="email">Email</label>
+          <span class="helper-text" data-error="wrong" data-success="right"></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+            <input id="password" type="password" class="validate" ng-model="company.password">
+          <label for="password">Password</label>
+        </div>
+          <div class="input-field col s6">
+            <input id="password" type="password" class="validate" ng-model="auxPassword">
+          <label for="confirm">Confirm Password</label>
+        </div>
+      </div>
+                        <button class="btn waves-effect waves-light" type="submit" name="action" ng-click="registerCompany()">Guardar
+    <i class="material-icons right">send</i>
+  </button>
+     
+                    </form>
+                    <!--.-------------------------hello------------------------>
+
+                </div>
+            </div>
+        </div>
+        
+
+
+
+                <!--Scripts-->
+                <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+                <script src="js/materialize.js"></script>
+                <script src="js/init.js"></script>
+    </body>
+
+                <footer class="page-footer #80deea cyan lighten-3">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col l6 s12">
+                                <h5 class="white-text">Diseños UPTC</h5>
+                                <p class="grey-text text-lighten-4">Karol Tatiana Alfonso</p>
+                                <p class="grey-text text-lighten-4">Mary Yuliana Boyacá</p>
+                                <p class="grey-text text-lighten-4">Fredy Alejandro Gamba</p>
+                                <p class="grey-text text-lighten-4">John Elkin Jiménez</p>
+                            </div>
+                            <div class="col l4 offset-l2 s12">
+                                <h5 class="white-text">Redes Sociales</h5>
+                                <a class="waves-effect waves-light btn-floating social google">
+                                    <i class="fa fa-google"></i> Sign in with google</a>
+                                <a class="waves-effect waves-light btn-floating social facebook">
+                                    <i class="fa fa-facebook"></i> Sign in with facebook</a>
+                                <a class="waves-effect waves-light btn-floating social twitter">
+                                    <i class="fa fa-twitter"></i> Sign in with twitter</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-copyright">
+                        <div class="container">
+                            © 2019 UPTC
+                            <a class="grey-text text-lighten-4 right" href="#!">VISITANOS</a>
+                        </div>
+                    </div>
+                </footer>
+</html>

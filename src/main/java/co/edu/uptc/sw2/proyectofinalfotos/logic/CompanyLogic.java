@@ -30,4 +30,8 @@ public class CompanyLogic {
         }
     }
     
+    public String verifyCompany(String email, String password){
+        return companyDAO.getCompany(email, password);
+    }
+    
 }

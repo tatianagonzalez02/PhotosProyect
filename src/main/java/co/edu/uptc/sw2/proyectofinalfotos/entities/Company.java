@@ -15,7 +15,8 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQueries({
-@NamedQuery(name="company", query="SELECT c FROM Company c WHERE c.emailCompany = :email")
+@NamedQuery(name="company", query="SELECT c FROM Company c WHERE c.emailCompany = :email"),
+@NamedQuery(name="company2", query="SELECT c FROM Company c WHERE c.emailCompany = :email AND c.password = :password")
 })
 public class Company implements Serializable {
 

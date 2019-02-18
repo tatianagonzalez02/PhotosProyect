@@ -24,9 +24,9 @@ public class CompanyService {
     
     @POST
     @Path("/login")
-    public boolean login(Company company){
+    public String login(Company company){
         System.out.println(company);
-        return false;
+        return companyLogic.verifyCompany(company.getEmailCompany(), company.getPassword());
     }
     
     @POST

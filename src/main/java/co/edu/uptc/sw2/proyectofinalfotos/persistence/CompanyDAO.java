@@ -1,22 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.uptc.sw2.proyectofinalfotos.persistence;
 
 import co.edu.uptc.sw2.proyectofinalfotos.entities.Company;
+import com.google.gson.Gson;
+import errors.ErrorCompany;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
-/**
- *
- * @author FREDY
- */
 @Stateless
 public class CompanyDAO {
  
+    private static final ErrorCompany ERROR_COMPANY = new ErrorCompany(0, "Datos erroneos");
+    private static final Gson GSON = new Gson();
+    
     @PersistenceContext
     private EntityManager entityManager;
     
@@ -32,6 +29,17 @@ public class CompanyDAO {
         }
     }
 
-    public void getCompany(String email, String password) {
+    public String getCompany(String email, String password) {
+        try {
+            Query query = entityManager.createNamedQuery("company2", Company.class);
+            System.out.println("Email -> " + email + " Password -> " + password);
+            query.setParameter("email", email);
+            query.setParameter("password", password);
+            return GSON.toJson(query.getSingleResult());
+        } catch (Exception e) {
+            System.out.println("No hay datos");
+        }
+        return GSON.toJson(ERROR_COMPANY);
     }
+    
 }
