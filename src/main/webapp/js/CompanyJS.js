@@ -26,4 +26,7 @@ app.controller("ctrlCompany", function($scope, $http) {
         }
     };
     
+    $scope.exitSesion = function (){
+        localStorage.removeItem("usuario");
+    };
 });
