@@ -8,13 +8,13 @@ app.controller("ctrlCompany", function($scope, $http) {
     $scope.registerCompany = function(){
         if ($scope.company !== null){
             if ($scope.company.password !== $scope.auxPassword){
-                alert("No coinciden la contraseña");
+                alert("No coincide la contraseña");
                 return;
             }
             $http.post("./webresources/CompanyService/register", $scope.company)
             .then(function(response) {
                     if (response.data) {
-                        alert("Tu cuenta a sido creada!");
+                        alert("Tu cuenta ha sido creada!");
                     }else{
                         alert("Ya existe esta cuenta.");
                     }
@@ -22,7 +22,7 @@ app.controller("ctrlCompany", function($scope, $http) {
                 alert("Error al registrar compañia");
             });
         }else{
-            alert("Debes ingresar los datos...");
+            alert("Debes ingresar los datos.");
         }
     };
     
