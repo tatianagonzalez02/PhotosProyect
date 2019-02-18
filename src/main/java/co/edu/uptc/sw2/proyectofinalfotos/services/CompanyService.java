@@ -6,6 +6,9 @@
 package co.edu.uptc.sw2.proyectofinalfotos.services;
 
 import co.edu.uptc.sw2.proyectofinalfotos.entities.Company;
+import co.edu.uptc.sw2.proyectofinalfotos.logic.CompanyLogic;
+import javax.ejb.EJB;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 
@@ -16,8 +19,19 @@ import javax.ws.rs.Path;
 @Path("CompanyService")
 public class CompanyService {
     
+    @EJB
+    private CompanyLogic companyLogic;
+    
     @POST
-    public void registerCompany(Company company){
+    @Path("/login")
+    public boolean login(Company company){
         System.out.println(company);
+        return false;
+    }
+    
+    @POST
+    @Path("/register")
+    public boolean registerCompany(Company company){
+        return companyLogic.addCompany(company);
     }
 }

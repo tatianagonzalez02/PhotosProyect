@@ -20,7 +20,14 @@ public class CompanyLogic {
     @EJB
     private CompanyDAO companyDAO;
     
-    public void addCompany(Company company){
-        companyDAO.addCompany(company);
+    public boolean addCompany(Company company){
+        System.out.println(company.getEmailCompany());
+        if (companyDAO.getCompany(company.getEmailCompany()) == null) {
+            companyDAO.addCompany(company);
+            return true;
+        }else{
+            return false;
+        }
     }
+    
 }

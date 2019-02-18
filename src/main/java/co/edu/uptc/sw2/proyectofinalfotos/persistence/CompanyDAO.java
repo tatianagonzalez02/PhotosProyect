@@ -23,4 +23,15 @@ public class CompanyDAO {
     public void addCompany(Company company){
         entityManager.persist(company);
     }
+    
+    public Company getCompany(String email){
+        try {
+            return entityManager.createNamedQuery("company", Company.class).setParameter("email", email).getSingleResult();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public void getCompany(String email, String password) {
+    }
 }
