@@ -25,13 +25,15 @@ public class CompanyService {
     @POST
     @Path("/login")
     public String login(Company company){
-        System.out.println(company);
         return companyLogic.verifyCompany(company.getEmailCompany(), company.getPassword());
     }
     
     @POST
     @Path("/register")
     public boolean registerCompany(Company company){
-        return companyLogic.addCompany(company);
+        boolean aux = companyLogic.addCompany(company);
+        System.out.println("Auxiliar -> " + aux);
+        return aux;
     }
+    
 }

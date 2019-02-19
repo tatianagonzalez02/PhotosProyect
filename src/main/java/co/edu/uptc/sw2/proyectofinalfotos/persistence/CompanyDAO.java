@@ -3,6 +3,7 @@ package co.edu.uptc.sw2.proyectofinalfotos.persistence;
 import co.edu.uptc.sw2.proyectofinalfotos.entities.Company;
 import com.google.gson.Gson;
 import errors.ErrorCompany;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -41,5 +42,6 @@ public class CompanyDAO {
         }
         return GSON.toJson(ERROR_COMPANY);
     }
+    
     
 }
