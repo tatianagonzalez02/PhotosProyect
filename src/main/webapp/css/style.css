@@ -21,8 +21,17 @@
 }
 
 .body{
+    background: url(imgindex/g1.jpg) no-repeat center top;
     background-image: url(imgindex/g1.jpg);
     background-size: cover;
+}
+.imagen{
+background-image: url(imgindex/g1.jpg);
+background-repeat: no-repeat;
+background-size: cover;
+}
+.card {
+    background-image: url(imgindex/g1.jpg);
 }
 .sesion{
     background-image: url(imgindex/g1.jpg);
