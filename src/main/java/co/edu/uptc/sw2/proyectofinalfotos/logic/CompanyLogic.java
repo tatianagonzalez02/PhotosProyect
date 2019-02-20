@@ -7,6 +7,7 @@ package co.edu.uptc.sw2.proyectofinalfotos.logic;
 
 import co.edu.uptc.sw2.proyectofinalfotos.entities.Company;
 import co.edu.uptc.sw2.proyectofinalfotos.persistence.CompanyDAO;
+import co.edu.uptc.sw2.proyectofinalfotos.utils.Strings;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -21,8 +22,8 @@ public class CompanyLogic {
     private CompanyDAO companyDAO;
     
     public boolean addCompany(Company company){
-        System.out.println(company.getEmailCompany());
         if (companyDAO.getCompany(company.getEmailCompany()) == null) {
+            company.setPassword(Strings.getHash(company.getPassword(), "SHA1"));
             companyDAO.addCompany(company);
             return true;
         }else{
