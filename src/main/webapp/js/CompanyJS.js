@@ -4,6 +4,7 @@ app.controller("ctrlCompany", function($scope, $http) {
    
     $scope.company = null;
     $scope.auxPassword = null;
+    $scope.users = ['Fabio', 'Leonardo', 'Thomas', 'Gabriele', 'Fabrizio', 'John', 'Luis', 'Kate', 'Max','maria', 'buu'];
     $scope.proyects = [
         {name: "ProyectoName", description: "ProyectoDescription", valuePay: 12000, listPhotos: null},
         {name: "ProyectoName", description: "ProyectoDescription", valuePay: 12000, listPhotos: null}

@@ -12,7 +12,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.1/angular.min.js"></script>
         <script src="js/IndexJS.js"></script>
     </head>
-    <body ng-controller="ctrlIndex">
+    <body ng-controller="ctrlIndex"  style="background-image: url(imgindex/empr.jpg); background-repeat: no-repeat;  background-size: cover;">
         <!--Navbar goes here--> 
         <nav>
             <div class="nav-wrapper #80deea cyan lighten-3">
@@ -23,19 +23,15 @@
                     </ul>
             </div>
         </nav>
-
-        <div class="parallax-container">
-            <div class="parallax"><img src="imgindex/empr.jpg"></div>
-        </div>
         <div class="row">
-            <div class="col s3 imagen">
+            <div class="col s4 imagen">
 
             </div>
 
-            <div class="col s9 ">
+            <div class="col s12 m3 ">
                 <!--Grey navigation panel--> 
-                <div class="login row ">
-                    <div class=" col s9 14 offset-14 imagen">
+                <div class="login-row ">
+                    <div class=" col s10 19 offset-14 imagen">
                         <div class="card">
                             <div class=" card-action #80deea cyan lighten-3">
                                 <h5>Iniciar Sesion</h5>
@@ -69,32 +65,4 @@
         <script src="js/materialize.js"></script>
         <script src="js/init.js"></script>
     </body>
-    <footer class="page-footer #80deea cyan lighten-3">
-        <div class="container">
-            <div class="row">
-                <div class="col l6 s12">
-                    <h5 class="white-text">Diseños UPTC</h5>
-                    <p class="grey-text text-lighten-4">Karol Tatiana Alfonso</p>
-                    <p class="grey-text text-lighten-4">Mary Yuliana Boyacá</p>
-                    <p class="grey-text text-lighten-4">Fredy Alejandro Gamba</p>
-                    <p class="grey-text text-lighten-4">John Elkin Jiménez</p>
-                </div>
-                <div class="col l4 offset-l2 s12">
-                    <h5 class="white-text">Redes Sociales</h5>
-                    <a class="waves-effect waves-light btn-floating social google">
-                        <i class="fa fa-google"></i> Sign in with google</a>
-                    <a class="waves-effect waves-light btn-floating social facebook">
-                        <i class="fa fa-facebook"></i> Sign in with facebook</a>
-                    <a class="waves-effect waves-light btn-floating social twitter">
-                        <i class="fa fa-twitter"></i> Sign in with twitter</a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-copyright">
-            <div class="container">
-                © 2019 UPTC
-                <a class="grey-text text-lighten-4 right" href="#!">VISITANOS</a>
-            </div>
-        </div>
-    </footer>
 </html>
