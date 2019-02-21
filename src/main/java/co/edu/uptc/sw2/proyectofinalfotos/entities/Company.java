@@ -2,12 +2,14 @@ package co.edu.uptc.sw2.proyectofinalfotos.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -26,6 +28,7 @@ public class Company implements Serializable {
     private String nameCompany;
     private String emailCompany;
     private String password;
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private List<Proyect> listProyects;
 
     public int getIdCompany() {
