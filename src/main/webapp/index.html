@@ -1,136 +1,73 @@
 <!DOCTYPE html>
 <html ng-app="app">
     <head>
+        <title>UPTC Fotos</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-
-        <title>UPTC</title>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link href="css/materialize-social.css" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.1/angular.min.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-        <script src="js/IndexJS.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+        <!--Importacion de angular-->
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+        <script src="//code.angularjs.org/1.2.19/i18n/angular-locale_es-es.js"></script>
+
+        <script src="js/materialize.js"></script>
+        <script src="js/init.js"></script>
+
+        <!--Para las rutas-->
+        <script src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-route.min.js'></script>
+        <script src="js/RouteProvider.js"></script>
+        <script src="js/CompaniesController.js"></script>
+        <script src="js/IndexController.js"></script>
+        <script src="js/LoginController.js"></script>
+        <script src="js/ProyectsController.js"></script>
+        <script src="js/RegisterController.js"></script>
+        <!--http://cursoangularjs.es/doku.php?id=unidades:07_rutas:02_routeprovider-->
+        
     </head>
+
     <body ng-controller="ctrlIndex">
-        <!--Navbar goes here--> 
         <nav>
             <div class="nav-wrapper #80deea cyan lighten-3">
-                <a href="#" class="brand-logo">
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="registro.html">Registrarse</a></li>
-                        <li><a ng-click="existLogin()">Iniciar Sesion</a></li>
-                    </ul>
+                <a href="#" class="brand-logo"></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down" ng-repeat="option in options">
+                    <li><a href="{{option.path}}" ng-if="!option.close">{{option.text}}</a></li>
+                    <!--<li ng-if="option.close"><a  ng-click="logout()"><i class="material-icons left">arrow_drop_down</i><a  ng-click="logout()">Cerrarsesion</a>-->
+                    <li ng-if="option.close"><a  ng-click="logout()"><a  ng-click="logout()">X</a>
+                </ul>
             </div>
         </nav>
-        <div class="row">
-            <div class="col s3">
-                <div class="row">
-                    <div class="col s12 ">
-                        <div class="card-panel teal #757575 grey darken-1">
-                            <span class="white-text">
-                                <h5>MISION</h5>
-                                <p ALIGN="justify">Ser el mejor proveedor de servicio fotografico del mundo. 
-                                    Para lograrlo, hemos establecido una cultura que apoya a los nuevos y 
-                                    jovenes talentos en fotografia, acercandolos a grandes empresas ofreciendo
-                                    un excelente servicio.</p>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="col s12 ">
-                        <div class="card-panel teal #757575 grey darken-1">
-                            <span class="white-text">
-                                <h5>VISION</h5>
-                                <p ALIGN="justify">Nuestra visión es ofrecer una herramienta tecnología innovadora 
-                                    que es accesible a todo el mundo y que se adapta a las 
-                                    necesidades de cada persona.
-                                    El servicio ofrecido elimina las barreras para las personas 
-                                    que desean un ingreso economico con pasiones desarrolladas y a la
-                                    vez aprovechar al máximo sus capacidades.</p>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="col s12 ">
-                        <div class="card-panel teal #757575 grey darken-1">
-                            <span class="white-text">
-                                <h5>OBJETIVOS</h5>
-                                <p ALIGN="justify">
-                                    Ofrecer un servicio de calidad,acercar a fotografo y
-                                    empresario de manera segura, dar a conocer el talento colombiano en el arte de la fotografia.<br>
-                                </p>
-                        </div>
-                    </div>
+
+        <div ng-view></div>
+
+    </body>
+
+    <footer class="page-footer #80deea cyan lighten-3">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Diseños UPTC</h5>
+                    <p class="grey-text text-lighten-4">Karol Alfonso, Mary Boyacá, Fredy Gamba, John Jiménez</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Redes Sociales</h5>
+                    <a class="waves-effect waves-light btn-floating social google">
+                        <i class="fa fa-google"></i> Sign in with google</a>
+                    <a class="waves-effect waves-light btn-floating social facebook">
+                        <i class="fa fa-facebook"></i></a>
+                    <a class="waves-effect waves-light btn-floating social twitter">
+                        <i class="fa fa-twitter"></i> Sign in with twitter</a>
                 </div>
             </div>
-            <br>
-            <br>
-            <div class="col s9 center">
-                <img id="logo" src="imgindex/logo.png" align="left">
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2019 UPTC
+                <a class="grey-text text-lighten-4 right" href="#!">VISITANOS</a>
+            </div>
+        </div>
+    </footer>
 
-                <h2 class="all-titles" align="center">Diseños UPTC</h2>
-                <br>
-                <h5>
-                    <p ALIGN="CENTER" font-family: "Homer Simpson cursive">Esta agencia fotográfica nace con el objetivo fundamental
-                       de proveer a todos los empresarios, de manera rápida, 
-                       eficaz, seria, original y creativa, con fotografias 
-                       para el desarrollo de los diversos productos que llevan 
-                       a cabo; ofreciendo una buena relación calidad- precio y 
-                       poniendo a disposición de todos los clientes una amplia
-                       variedad de fotografos con los cuales pueden contactarse.
-                       Y para aquello amantes a la fotografia un espacio para 
-                       exponer sus trabajos y obtener reconocimiento en importantes
-                       empresas. 
-                </p>
-            </h5>
-            <br>
-            <br>
-            <div class="carousel carousel-slider">
-                <a class="carousel-item" href="#one!"><img src="imgindex/g1.jpg"></a>
-                <a class="carousel-item" href="#two!"><img src="imgindex/g2.jpg"></a>
-                <a class="carousel-item" href="#three!"><img src="imgindex/g3.jpg"></a>
-                <a class="carousel-item" href="#four!"><img src="imgindex/g4.jpg"></a>
-                <a class="carousel-item" href="#five!"><img src="imgindex/g5.jpg"></a>
-                <a class="carousel-item" href="#six!"><img src="imgindex/g6.jpg"></a>
-                <a class="carousel-item" href="#seven!"><img src="imgindex/g7.jpg"></a>
-                <a class="carousel-item" href="#eigth!"><img src="imgindex/g8.jpg"></a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!--Scripts-->
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="js/materialize.js"></script>
-<script src="js/init.js"></script>
-</body>
-<footer class="page-footer #80deea cyan lighten-3">
-    <div class="container">
-        <div class="row">
-            <div class="col l6 s12">
-                <h5 class="white-text">Diseños UPTC</h5>
-                <p class="grey-text text-lighten-4">Karol Tatiana Alfonso</p>
-                <p class="grey-text text-lighten-4">Mary Yuliana Boyacá</p>
-                <p class="grey-text text-lighten-4">Fredy Alejandro Gamba</p>
-                <p class="grey-text text-lighten-4">John Elkin Jiménez</p>
-            </div>
-            <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Redes Sociales</h5>
-                <a class="waves-effect waves-light btn-floating social google">
-                    <i class="fa fa-google"></i> Sign in with google</a>
-                <a class="waves-effect waves-light btn-floating social facebook">
-                    <i class="fa fa-facebook"></i> Sign in with facebook</a>
-                <a class="waves-effect waves-light btn-floating social twitter">
-                    <i class="fa fa-twitter"></i> Sign in with twitter</a>
-            </div>
-        </div>
-    </div>
-    <div class="footer-copyright">
-        <div class="container">
-            © 2019 UPTC
-            <a class="grey-text text-lighten-4 right" href="#!">VISITANOS</a>
-        </div>
-    </div>
-</footer>
 </html>

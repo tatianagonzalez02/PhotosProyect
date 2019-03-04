@@ -8,6 +8,7 @@ package co.edu.uptc.sw2.proyectofinalfotos.logic;
 import co.edu.uptc.sw2.proyectofinalfotos.entities.Company;
 import co.edu.uptc.sw2.proyectofinalfotos.persistence.CompanyDAO;
 import co.edu.uptc.sw2.proyectofinalfotos.utils.Strings;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -33,6 +34,14 @@ public class CompanyLogic {
     
     public String verifyCompany(String email, String password){
         return companyDAO.getCompany(email, Strings.getHash(password, "SHA1"));
+    }
+
+    public List<Company> getCompanies() {
+        return companyDAO.getCompanies();
+    }
+
+    public List<Company> getProyects(int id) {
+        return companyDAO.getProyects(id);
     }
     
 }

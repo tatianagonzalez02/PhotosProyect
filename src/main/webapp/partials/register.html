@@ -1,0 +1,48 @@
+<div style="background-image: url(imgindex/empr1.jpg)">
+    <div class="container" >
+        <div class="login-row">
+            <div class=" col s6 14 offset-14 imagen">
+                <div class="card">
+                    <div class="card-action #80deea cyan lighten-3">
+                        <h5 align="center" >Registra tu empresa</h5>
+                    </div>
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="input-field col s11">
+                                <i class="material-icons prefix">account_circle</i>
+                                <input id="first_name" type="text" class="validate" ng-model="company.nameCompany">
+                                <label for="first_name" align="center">Nombre</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s11">
+                                <i class="material-icons prefix">email</i>
+                                <input id="email" type="email" class="validate" ng-model="company.emailCompany">
+                                <label for="email">Email</label>
+                                <span class="helper-text" data-error="wrong" data-success="right"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s11">
+                                <i class="material-icons prefix">lock_outline</i>
+                                <input id="password" type="password" class="validate" ng-model="company.password">
+                                <label for="password">Password</label>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s11">
+                                <i class="material-icons prefix">lock_outline</i>
+                                <input id="confirmPassword" type="password" class="validate" ng-model="auxPassword">
+                                <label for="password">Confirm Password</label>
+                            </div>
+                        </div>
+                        <button class="btn btn-register waves-effect waves-light " type="submit" name="action" ng-click="registerCompany()">Guardar
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -6,11 +6,15 @@
 package co.edu.uptc.sw2.proyectofinalfotos.services;
 
 import co.edu.uptc.sw2.proyectofinalfotos.entities.Company;
+import co.edu.uptc.sw2.proyectofinalfotos.entities.Proyect;
 import co.edu.uptc.sw2.proyectofinalfotos.logic.CompanyLogic;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.QueryParam;
 
 /**
  *
@@ -31,9 +35,17 @@ public class CompanyService {
     @POST
     @Path("/register")
     public boolean registerCompany(Company company){
-        boolean aux = companyLogic.addCompany(company);
-        System.out.println("Auxiliar -> " + aux);
-        return aux;
+        List<Proyect> proyects = company.getListProyects();
+        for (Proyect proyect : proyects) {
+            System.out.println(proyect);
+        }
+        return companyLogic.addCompany(company);
+    }
+    
+    @GET
+    @Path("/companies")
+    public List<Company> getCompanies(){
+        return companyLogic.getCompanies();
     }
     
 }

@@ -1,8 +1,10 @@
 package co.edu.uptc.sw2.proyectofinalfotos.persistence;
 
 import co.edu.uptc.sw2.proyectofinalfotos.entities.Company;
+import co.edu.uptc.sw2.proyectofinalfotos.entities.Proyect;
 import com.google.gson.Gson;
 import errors.ErrorCompany;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -40,5 +42,14 @@ public class CompanyDAO {
             System.out.println("No hay datos");
         }
         return GSON.toJson(ERROR_COMPANY);
+    }
+
+    public List<Company> getCompanies() {
+        return entityManager.createQuery("SELECT c FROM Company c").getResultList();
+    }
+
+    public List<Company> getProyects(int id) {
+//        return entityManager.createNamedQuery("getProyects", Proyect.class).setParameter("id", id).getSingleResult();
+        return null;
     }
 }

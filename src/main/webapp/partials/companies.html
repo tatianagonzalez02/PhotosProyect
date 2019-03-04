@@ -1,0 +1,89 @@
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">    
+    <link rel="stylesheet" href="css/companiesStyle.css">
+</head> 
+<div class="testimonials">
+    <div class="inner">
+        <h1 >Compañias</h1>
+        <div class="border"></div>
+        <p>
+           A continuacion podras ver las distintas compañias que hacen parte del sistema de Diseños UPTC, sube tu foto si deseas
+                           contribuir al portafolio de fotografias de cada compañia.
+        </p>
+        <br>
+
+        <div class="row">
+            <div class="col" ng-repeat="company in companies">
+                <div class="card blue-grey darken-1">
+                    <div class="testimonial">
+                        <img src="imgindex/perfil.jpg" alt="">
+                        <div class="name">{{company.nameCompany}}</div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                        </p>
+                    </div>
+                    <div class="card-action">
+                        <a href="" ng-click="showProyects(company.idCompany)">Ver proyectos</a>
+                        <a href="#">Subir fotos</a>
+                    </div>
+                </div>
+            </div>
+
+<!--            <div class="col">
+                <div class="card blue-grey darken-1">
+                    <div class="testimonial">
+                        <img src="imgindex/perfil.jpg" alt="">
+                        <div class="name">Full name</div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+
+                        <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                        </p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#">Ver fotos</a>
+                        <a href="#">Subir foto</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card blue-grey darken-1">
+                    <div class="testimonial">
+                        <img src="imgindex/perfil.jpg" alt="">
+                        <div class="name">Full name</div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+
+                        <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                        </p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#">Ver fotos</a>
+                        <a href="#">Subir fotos</a>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+    </div>
+</div>
+
