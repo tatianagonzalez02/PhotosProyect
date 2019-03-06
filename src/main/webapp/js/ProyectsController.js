@@ -15,6 +15,6 @@ app.controller("ctrlProyects", function ($scope, $http) {
     //    abre el modal donde muestra las fotografias
     $scope.verListFotografias= function (){
          $('#modal2').modal().open();
-
     }
+    
 });

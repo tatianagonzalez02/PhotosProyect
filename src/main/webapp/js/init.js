@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', function() {
      var elemsP = document.querySelectorAll('.parallax');
     var instancesP = M.Parallax.init(elemsP, {});
 //  });
+
+//    --
     var elems = document.querySelectorAll('.carousel');
     var instances = M.Carousel.init(elems, {});
     $('.carousel').carousel({
@@ -13,3 +15,5 @@ function autoplay() {
     setTimeout(autoplay, 4500);
 }
   });
+
+

@@ -3,9 +3,9 @@
 <div class="white-text" style=" background-image: url(imgindex/header.jpg); background-repeat: no-repeat;background-size: cover;">
     <br>
     <h3 class="center-align">Nombre empresa</h3>
-   <h4 class="center-align">Proyectos</h4>
-   <br>
-   <br>
+    <h4 class="center-align">Proyectos</h4>
+    <br>
+    <br>
 </div>
 <br>
 <div class = "containerProjects" >
@@ -22,7 +22,7 @@
                         <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
                     </div>
                     <div class="card-action center-align">
-                        <a href="">Subir Fotografia</a>
+                        <a class= "modal-trigger" data-target="modalSubirF" ng-click="subirFotografias()">Subir Fotografia</a>
                     </div>
                 </div>
             </div>
@@ -112,7 +112,7 @@
     </div>
 </div>
 
-<!-- Modal Structure -->
+<!-- Modal ver fotografias Structure -->
 <div id="modal1" class="modal modal-fixed-footer">
 
     <div class="modal-content">
@@ -168,6 +168,63 @@
             <li class="waves-effect"><a href=""><i class="material-icons">chevron_right</i></a></li>
         </ul>
         <!--<a href="" class="modal-close waves-effect waves-green btn-flat red white-text">Cerrar</a>-->
+    </div>
+</div>
+
+<!--modal subir fotografias-->
+<div id="modalSubirF" class="modal">
+    <div class="modal-content">
+        <h4>Subir Fotografia</h4>
+
+        <div class="row">
+            <div class="col s6">
+                <div class=" file-field input-field ">
+                    <div class="row">
+                        <div class="btn left-align blue lighten-2"><i class="material-icons right">add_a_photo</i>
+                            <span>Cargar Imagen</span>
+                            <input type="file" multiple>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text" placeholder="Cargue uno o mas archivos">
+                        </div>
+                    </div>
+                </div>
+                
+                <br>
+
+                <div class="form-field center-align">
+                </div>
+            </div>
+            <div class="col s6">
+                <p>Ingrese sus datos</p>
+                <div class="card-content">
+                    <div class="form-field">
+                        <i class="material-icons prefix">account_circle</i>
+                        <label for="names">Nombres</label>
+                        <input type="text" id="names" ng-model="">
+                        <br>
+                        <i class="material-icons prefix">account_circle</i>
+                        <label for="lastName">Apellidos</label>
+                        <input type="text" id="lastName" ng-model="">
+                        <br>
+                        <i class="material-icons prefix">email</i>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" ng-model="">
+                        <br>
+                        <i class="material-icons prefix">attach_money</i>
+                        <label for="number">Precio</label>
+                        <input type="number" id="price" ng-model="">
+                    </div>
+                    <br>
+
+                    <button class="btn modal-close waves-effect blue lighten-2" type="submit" name="action">Enviar
+                        <i class="material-icons right">submit</i>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>
 
