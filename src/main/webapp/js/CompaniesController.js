@@ -16,4 +16,10 @@ app.controller("ctrlCompanies", function ($scope, $http) {
     };
     
     $scope.getCompanies();
+    
+//    abre el modal donde muestra las fotografias
+    $scope.verListFotografias= function (){
+         $('#modal1').modal().open();
+
+    }
 });

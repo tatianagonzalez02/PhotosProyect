@@ -72,3 +72,10 @@ h1{
 }
 }
 
+.headerStyle{
+    text-align: center;
+    
+    align-items: center;
+     font-family: "montserrat",sans-serif;
+     font-size: 50px;
+}
