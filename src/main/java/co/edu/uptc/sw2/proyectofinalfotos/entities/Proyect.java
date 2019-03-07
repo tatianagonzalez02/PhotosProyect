@@ -10,11 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.OneToMany;
 
-/**
- * Proyecto creado por el administrador de la compañia
- *
- * @author Karol Alfonso
- */
 @Entity
 @NamedQueries({
 })

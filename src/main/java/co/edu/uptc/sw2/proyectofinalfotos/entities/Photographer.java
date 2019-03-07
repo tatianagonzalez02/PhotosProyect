@@ -1,14 +1,11 @@
 package co.edu.uptc.sw2.proyectofinalfotos.entities;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-/**
- *
- * @author Karol Alfonso
- */
 @Entity
-public class Photographer {
+public class Photographer implements Serializable {
 
     @Id
     private int idPhtographer;

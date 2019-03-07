@@ -11,15 +11,11 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
-/**
- *
- * @author Karol Alfonso, fredy gamba, yulina y jhon
- */
 @Entity
 @NamedQueries({
 @NamedQuery(name="company", query="SELECT c FROM Company c WHERE c.emailCompany = :email"),
 @NamedQuery(name="company2", query="SELECT c FROM Company c WHERE c.emailCompany = :email AND c.password = :password"),
-        @NamedQuery(name="getCompany", query="SELECT c FROM Company c WHERE c.idCompany = :id")
+@NamedQuery(name="getCompany", query="SELECT c FROM Company c WHERE c.idCompany = :id")
 })
 public class Company implements Serializable {
 

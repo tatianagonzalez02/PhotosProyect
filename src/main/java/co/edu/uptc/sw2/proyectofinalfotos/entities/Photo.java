@@ -1,16 +1,13 @@
 package co.edu.uptc.sw2.proyectofinalfotos.entities;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/**
- *
- * @author Karol Alfonso, Fredy Gamba
- */
 @Entity
-public class Photo {
+public class Photo implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -59,4 +56,5 @@ public class Photo {
     public void setPath(String path) {
         this.path = path;
     }
+    
 }
