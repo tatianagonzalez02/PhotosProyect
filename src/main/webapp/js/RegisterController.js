@@ -2,11 +2,12 @@ app.controller("ctrlRegister", function($scope, $http) {
    
     $scope.company = null;
     $scope.auxPassword = null;
+    $scope.listPhotos = [{photographer: null, requestValue: 0, path: "http://proyectofse.mx/wp-content/uploads/2016/04/prodetes_checklist-759x500.jpg"}];
     $scope.users = ['Fabio', 'Leonardo', 'Thomas', 'Gabriele', 'Fabrizio', 'John', 'Luis', 'Kate', 'Max','maria', 'buu'];
     $scope.proyects = [
-        {name: "ProyectoName1", description: "ProyectoDescription", valuePay: 12000, listPhotos: null, Company: null},
-        {name: "ProyectoName2", description: "ProyectoDescription", valuePay: 12000, listPhotos: null, Company: null},
-        {name: "ProyectoName3", description: "ProyectoDescription", valuePay: 12000, listPhotos: null, Company: null}
+        {name: "ProyectoName1", description: "ProyectoDescription", valuePay: 12000, listPhotos: $scope.listPhotos, Company: null},
+        {name: "ProyectoName2", description: "ProyectoDescription", valuePay: 12000, listPhotos: $scope.listPhotos, Company: null},
+        {name: "ProyectoName3", description: "ProyectoDescription", valuePay: 12000, listPhotos: $scope.listPhotos, Company: null}
     ];
    
     $scope.registerCompany = function(){
@@ -19,7 +20,6 @@ app.controller("ctrlRegister", function($scope, $http) {
             for (var i = 0; i < $scope.company.listProyects.length; i++) {
                 $scope.company.listProyects.company = $scope.company;
             }
-            console.log($scope.company.listProyects);
             $http.post("./webresources/CompanyService/register", $scope.company)
             .then(function(response) {
                     if (response.data) {
