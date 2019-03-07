@@ -11,7 +11,8 @@ app.controller("ctrlProjectsViewer", function ($scope, $http) {
         });
     };
     
-    $scope.verListFotografias= function (){
+    $scope.verListFotografias= function (idProyect){
+        console.log(idProyect);//Voy aqui...
          $('#modal1').modal().open();
     };
     
