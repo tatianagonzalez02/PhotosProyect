@@ -1,20 +1,21 @@
 app.controller("ctrlProyects", function ($scope, $http) {
 
-    $scope.getProyects = function(){
-//        $scope.companyID = localStorage.getItem("company");
-//        $http.get("./webresources/ProyectService/" + $scope.companyID, {})
-//            .then(function(response) {
-//                $scope.companies = response.data;
-//        }, function(){
-//            alert("Error al obtener compañias");
-//        });
+    $scope.company = null;
+    
+    $scope.getCompany = function (){
+        $http.get("./webresources/CompanyService/" + localStorage.getItem("company"),{})
+            .then(function(response) {
+                $scope.company = response.data;
+        }, function(){
+            alert("Error al obtener compañias");
+        });
     };
     
-    $scope.getProyects();
+    $scope.getCompany();
     
     //    abre el modal donde muestra las fotografias
     $scope.verListFotografias= function (){
          $('#modal2').modal().open();
-    }
+    };
     
 });
