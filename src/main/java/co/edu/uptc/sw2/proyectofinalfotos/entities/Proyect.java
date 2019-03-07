@@ -2,11 +2,13 @@ package co.edu.uptc.sw2.proyectofinalfotos.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
+import javax.persistence.OneToMany;
 
 /**
  * Proyecto creado por el administrador de la compañia
@@ -24,6 +26,7 @@ public class Proyect implements Serializable {
     private String name;
     private String description;
     private double valuePay;
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private List<Photo> listPhotos;
 
     public int getId() {
