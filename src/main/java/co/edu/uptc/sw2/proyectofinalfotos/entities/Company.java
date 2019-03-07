@@ -29,7 +29,7 @@ public class Company implements Serializable {
     private String nameCompany;
     private String emailCompany;
     private String password;
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, mappedBy = "company", fetch = FetchType.EAGER)
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, mappedBy = "company")
     private List<Proyect> listProyects;
 
     public int getIdCompany() {
