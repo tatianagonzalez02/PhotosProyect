@@ -11,8 +11,9 @@ app.controller("ctrlCompanies", function ($scope, $http) {
         });
     };
     
-    $scope.showProyects = function(idCompany){
+    $scope.viewCompanyProyects = function(idCompany){
         localStorage.setItem("viewCompany", idCompany);
+        window.location.replace("#listProyects");
     };
     
     $scope.getCompanies();
@@ -20,10 +21,10 @@ app.controller("ctrlCompanies", function ($scope, $http) {
 //    abre el modal donde muestra las fotografias
     $scope.verListFotografias= function (){
          $('#modal1').modal().open();
-    }
+    };
     
     //abre el modal para subir fotografias
     $scope.subirFotografias= function (){
          $('#modalSubirF').modal().open();
-    }
+    };
 });
