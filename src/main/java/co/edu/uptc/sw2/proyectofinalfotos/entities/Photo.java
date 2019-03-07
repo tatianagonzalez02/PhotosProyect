@@ -1,20 +1,23 @@
 package co.edu.uptc.sw2.proyectofinalfotos.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
  *
- * @author Karol Alfonso
+ * @author Karol Alfonso, Fredy Gamba
  */
 @Entity
 public class Photo {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int idPhoto;
     private Photographer photographer;
     private double requestValue;
-    private EnumStatus enumStatus;
+    private EnumStatus enumStatus = EnumStatus.IN_PROCESS;
     private String path;
 
     public int getIdPhoto() {
