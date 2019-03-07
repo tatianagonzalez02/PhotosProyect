@@ -6,9 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 
 /**
  * Proyecto creado por el administrador de la compañia
@@ -17,7 +15,6 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQueries({
-@NamedQuery(name="getProyects", query="SELECT p FROM Proyect p WHERE p.company = :id")
 })
 public class Proyect implements Serializable {
 
@@ -28,8 +25,6 @@ public class Proyect implements Serializable {
     private String description;
     private double valuePay;
     private List<Photo> listPhotos;
-    @ManyToOne
-    private Company company;
 
     public int getId() {
         return idProyect;
@@ -73,7 +68,7 @@ public class Proyect implements Serializable {
 
     @Override
     public String toString() {
-        return "Proyect{" + "idProyect=" + idProyect + ", name=" + name + ", description=" + description + ", valuePay=" + valuePay + ", listPhotos=" + listPhotos + ", company=" + company + '}';
+        return "Proyect{" + "idProyect=" + idProyect + ", name=" + name + ", description=" + description + ", valuePay=" + valuePay + ", listPhotos=" + listPhotos + '}';
     }
     
 }
