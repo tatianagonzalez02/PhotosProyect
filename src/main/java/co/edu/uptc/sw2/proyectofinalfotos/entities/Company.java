@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,7 +18,8 @@ import javax.persistence.OneToMany;
 @Entity
 @NamedQueries({
 @NamedQuery(name="company", query="SELECT c FROM Company c WHERE c.emailCompany = :email"),
-@NamedQuery(name="company2", query="SELECT c FROM Company c WHERE c.emailCompany = :email AND c.password = :password")
+@NamedQuery(name="company2", query="SELECT c FROM Company c WHERE c.emailCompany = :email AND c.password = :password"),
+        @NamedQuery(name="getCompany", query="SELECT c FROM Company c WHERE c.idCompany = :id")
 })
 public class Company implements Serializable {
 
