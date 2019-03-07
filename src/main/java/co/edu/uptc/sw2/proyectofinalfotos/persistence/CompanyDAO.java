@@ -1,7 +1,6 @@
 package co.edu.uptc.sw2.proyectofinalfotos.persistence;
 
 import co.edu.uptc.sw2.proyectofinalfotos.entities.Company;
-import co.edu.uptc.sw2.proyectofinalfotos.entities.Proyect;
 import com.google.gson.Gson;
 import errors.ErrorCompany;
 import java.util.List;
@@ -51,5 +50,9 @@ public class CompanyDAO {
     public List<Company> getProyects(int id) {
 //        return entityManager.createNamedQuery("getProyects", Proyect.class).setParameter("id", id).getSingleResult();
         return null;
+    }
+
+    public Company getCompany(int idCompany) {
+        return entityManager.createNamedQuery("getCompany", Company.class).setParameter("id", idCompany).getSingleResult();
     }
 }
