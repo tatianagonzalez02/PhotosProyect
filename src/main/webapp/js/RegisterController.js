@@ -4,8 +4,9 @@ app.controller("ctrlRegister", function($scope, $http) {
     $scope.auxPassword = null;
     $scope.users = ['Fabio', 'Leonardo', 'Thomas', 'Gabriele', 'Fabrizio', 'John', 'Luis', 'Kate', 'Max','maria', 'buu'];
     $scope.proyects = [
-        {name: "ProyectoName", description: "ProyectoDescription", valuePay: 12000, listPhotos: null, Company: null},
-        {name: "ProyectoName", description: "ProyectoDescription", valuePay: 12000, listPhotos: null, Company: null}
+        {name: "ProyectoName1", description: "ProyectoDescription", valuePay: 12000, listPhotos: null, Company: null},
+        {name: "ProyectoName2", description: "ProyectoDescription", valuePay: 12000, listPhotos: null, Company: null},
+        {name: "ProyectoName3", description: "ProyectoDescription", valuePay: 12000, listPhotos: null, Company: null}
     ];
    
     $scope.registerCompany = function(){
