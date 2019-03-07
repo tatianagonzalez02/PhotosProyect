@@ -15,6 +15,7 @@ public class Photo {
     private Photographer photographer;
     private double requestValue;
     private EnumStatus enumStatus;
+    private String path;
 
     public int getIdPhoto() {
         return idPhoto;
@@ -48,4 +49,11 @@ public class Photo {
         this.enumStatus = enumStatus;
     }
 
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
 }
