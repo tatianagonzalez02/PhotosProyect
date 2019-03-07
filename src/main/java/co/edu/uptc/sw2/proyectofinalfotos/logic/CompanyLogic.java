@@ -36,6 +36,10 @@ public class CompanyLogic {
         return companyDAO.getCompany(email, Strings.getHash(password, "SHA1"));
     }
 
+    public Company getCompany(int idCompany) {
+        return companyDAO.getCompany(idCompany);
+    }
+    
     public List<Company> getCompanies() {
         return companyDAO.getCompanies();
     }
@@ -43,5 +47,4 @@ public class CompanyLogic {
     public List<Company> getProyects(int id) {
         return companyDAO.getProyects(id);
     }
-    
 }
