@@ -21,5 +21,13 @@ app.controller("ctrlProjectsViewer", function ($scope, $http) {
          $('#modalSubirF').modal().open();
     };
     
+    $scope.sendPhoto = function (){
+        const input = document.getElementById('inputFileServer');
+        if (input.files && input.files[0]) {
+            console.log("File seleccionado: ", input.files[0]);
+        }
+        $http.post("./webresources/ProyectService/sendPhoto", input.files[0])
+    }
+    
     $scope.getData();
 });
