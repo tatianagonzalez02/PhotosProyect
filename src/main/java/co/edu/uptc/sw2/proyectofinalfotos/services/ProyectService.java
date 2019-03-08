@@ -24,7 +24,7 @@ public class ProyectService {
     @Path("/sendPhoto")
     public String sendPhoto(File image) throws IOException{
         BufferedImage image1 = ImageIO.read(image);
-        File outputFile = new File("C:/Users/FREDY/Downloads/PDF/mifoto.png");
+        File outputFile = new File("C:/Users/asus/desktop/mifoto.png");
         ImageIO.write(image1, "png", outputFile);
         return outputFile.getPath();
     }
