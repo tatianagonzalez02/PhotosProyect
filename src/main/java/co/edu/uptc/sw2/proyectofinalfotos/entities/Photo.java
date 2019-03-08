@@ -1,6 +1,7 @@
 package co.edu.uptc.sw2.proyectofinalfotos.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,8 +15,10 @@ public class Photo implements Serializable {
     private int idPhoto;
     private Photographer photographer;
     private double requestValue;
-    private EnumStatus enumStatus = EnumStatus.IN_PROCESS;
+    private EnumStatus enumStatus;
     private String path;
+//    @Temporal(TemporalType.DATE)
+    private Date date;
 
     public int getIdPhoto() {
         return idPhoto;
@@ -55,6 +58,19 @@ public class Photo implements Serializable {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Photo{" + "idPhoto=" + idPhoto + ", photographer=" + photographer + ", requestValue=" + requestValue + ", enumStatus=" + enumStatus + ", path=" + path + ", date=" + date + '}';
     }
     
 }
