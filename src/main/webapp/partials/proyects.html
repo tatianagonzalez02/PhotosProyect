@@ -47,9 +47,9 @@
             <div class="col col1 s1 m4" ng-repeat="proyect in company.listProyects">
                 <div class="card sticky-action">    
                     <div class="card-image">
-                        <img src="{{proyect.listPhotos[0].path}}">
+                        <img src="{{proyect.listPhotos[0].path}}" alt="Por si no te has dado cuenta, esto es una image.">
                         <span class="card-title">{{proyect.name}}</span>
-                          <a class="btn-floating halfway-fab waves-effect waves-light red btn modal-trigger" data-target="modal2" ng-click="verListFotografias()"><i class="material-icons">add</i></a>
+                          <a class="btn-floating halfway-fab waves-effect waves-light red btn modal-trigger" data-target="modal2" ng-click="verListFotografias(proyect.id)"><i class="material-icons">add</i></a>
                     </div>
                     <div class="card-content">
                         <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
@@ -155,13 +155,13 @@
 <div id="modal2" class="modal modal-fixed-footer">
 
     <div class="modal-content">
-        <h5 >Fotografias del proyecto de deportes</h5>
+        <h5 >Fotografias del proyecto de {{company.nameCompany}}</h5>
         <!--Tarjeta para fotografias-->
         <div class="row">
-            <div class="col col1 s5 m3">
+            <div class="col col1 s5 m3" ng-repeat="photo in photosToShow">
                 <div  class="card">
                     <div class="card card-image">
-                        <img src="imgindex/g7.jpg">
+                        <img src="{{photo.path}}" alt="">
                     </div>
                      <div class="card-content">
                          <p>Email: <p>
@@ -171,7 +171,7 @@
                 </div>
             </div>
 
-             <div class="col col1 s5 m3">
+<!--             <div class="col col1 s5 m3">
                 <div  class="card">
                     <div class="card card-image">
                         <img src="imgindex/g7.jpg">
@@ -182,9 +182,9 @@
                          <p>Fecha subida: <p>
                     </div>
                 </div>
-            </div>
+            </div>-->
             
-             <div class="col col1 s5 m3">
+<!--             <div class="col col1 s5 m3">
                 <div  class="card">
                     <div class="card card-image">
                         <img src="imgindex/g7.jpg">
@@ -195,9 +195,9 @@
                          <p>Fecha subida: <p>
                     </div>
                 </div>
-            </div>
+            </div>-->
             
-              <div class="col col2 s5 m3">
+<!--              <div class="col col2 s5 m3">
                 <div  class="card">
                     <div class="card card-image">
                         <img src="imgindex/g7.jpg">
@@ -208,7 +208,7 @@
                          <p>Fecha subida: <p>
                     </div>
                 </div>
-            </div>
+            </div>-->
 
            
         </div>
