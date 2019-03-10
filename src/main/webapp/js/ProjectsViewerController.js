@@ -4,7 +4,7 @@ app.controller("ctrlProjectsViewer", function ($scope, $http) {
     $scope.chosenProject = null;
     $scope.photosToShow = [];
     $scope.photographer = null;
-    $scope.newPhoto = {path: null};
+    $scope.newPhoto = {};
 
     $scope.getData = function () {
         $http.get("./webresources/CompanyService/" + localStorage.getItem("viewCompany"), {})
@@ -22,10 +22,8 @@ app.controller("ctrlProjectsViewer", function ($scope, $http) {
         for (var i = 0; i < $scope.projects.length; i++) {
             if ($scope.projects[i].id === idProject) {
                 $scope.photos = $scope.projects[i].listPhotos;
-                console.log($scope.photos);
                 for (var i = 0; i < $scope.photos.length; i++) {
                     if ($scope.photos[i].enumStatus === "AVAILABLE") {
-                        console.log("si hay una");
                         $scope.photosToShow.push($scope.photos[i]);
                     } else {
                         $scope.photosToShow.push({path: "https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/43b892a2-9859-4905-be03-384c222c1f17/excerpt-lazy-load.png"});
@@ -45,18 +43,14 @@ app.controller("ctrlProjectsViewer", function ($scope, $http) {
 
     $scope.sendPhoto = function () {
         const input = document.getElementById('inputFileServer');
-//        if (input.files && input.files[0]) {
-//            console.log("File seleccionado: ", input.files[0]);
-//        }
-//        $http.post("./webresources/ProyectService/sendPhoto", input.files[0])
         $http.post("./webresources/ProyectService/sendPhoto", input.files[0])
                 .then(function (response) {
                     $scope.newPhoto.path = response.data;
                     $scope.updateProyect();
+                    alert("Hemos recibido tu fotografía y la estamos procesando para que sea publicada.");
                 }, function () {
                     alert("Error al cargar la imagen");
                 });
-        alert("Hemos recibido tu fotografía y la estamos procesando para que sea publicada.");
     };
 
     $scope.updateProyect = function () {

@@ -24,6 +24,7 @@ app.controller("ctrlRegister", function($scope, $http) {
             .then(function(response) {
                     if (response.data) {
                         alert("Tu cuenta ha sido creada!");
+                        window.location.replace("#login");
                     }else{
                         alert("Ya existe esta cuenta.");
                     }
