@@ -24,6 +24,7 @@ app.controller("ctrlProyects", function ($scope, $http) {
 
     //    abre el modal donde muestra las fotografias
     $scope.verListFotografias = function (idProject) {
+        $scope.photosToShow = [];
         for (var i = 0; i < $scope.projects.length; i++) {
             if ($scope.projects[i].id === idProject) {
                 $scope.photos = $scope.projects[i].listPhotos;
