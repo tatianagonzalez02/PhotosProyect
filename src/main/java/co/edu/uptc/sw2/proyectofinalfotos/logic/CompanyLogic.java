@@ -1,8 +1,11 @@
 package co.edu.uptc.sw2.proyectofinalfotos.logic;
 
 import co.edu.uptc.sw2.proyectofinalfotos.entities.Company;
+import co.edu.uptc.sw2.proyectofinalfotos.entities.Photo;
+import co.edu.uptc.sw2.proyectofinalfotos.entities.Proyect;
 import co.edu.uptc.sw2.proyectofinalfotos.persistence.CompanyDAO;
 import co.edu.uptc.sw2.proyectofinalfotos.utils.Strings;
+import java.util.Comparator;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -28,7 +31,17 @@ public class CompanyLogic {
     }
 
     public Company getCompany(int idCompany) {
-        return companyDAO.getCompany(idCompany);
+        Company company = companyDAO.getCompany(idCompany);
+        List<Proyect> proyects = company.getListProyects();
+        for (Proyect proyect : proyects) {
+            proyect.getListPhotos().sort(new Comparator<Photo>() {
+                @Override
+                public int compare(Photo photo1, Photo photo2) {
+                    return photo2.getDate().compareTo(photo1.getDate());
+                };
+            });
+        }
+        return company;
     }
     
     public List<Company> getCompanies() {
