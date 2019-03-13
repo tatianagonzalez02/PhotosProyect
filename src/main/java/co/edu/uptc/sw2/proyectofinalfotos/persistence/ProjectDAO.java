@@ -20,8 +20,12 @@ public class ProjectDAO {
     @PersistenceContext
     private EntityManager entityManager;
     
+    public Proyect getProject(int idProject) {
+        return entityManager.createNamedQuery("getProject", Proyect.class).setParameter("idProject", idProject).getSingleResult();
+    }
+    
     public void updateProject(Proyect proyect) {
         entityManager.merge(proyect);
     }
-    
+
 }
