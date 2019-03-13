@@ -63,8 +63,7 @@ app.controller("ctrlProjectsViewer", function ($scope, $http) {
         }
         $scope.newPhoto.date = new Date();
         $scope.newPhoto.photographer = $scope.photographer;
-        $scope.project.listPhotos.push($scope.newPhoto);
-        $http.put("./webresources/ProyectService/update", $scope.project)
+        $http.post("./webresources/PhotoService/" + $scope.project.id, $scope.newPhoto)
                 .then(function () {
                 }, function () {
                     alert("Error al actualizar proyecto");
