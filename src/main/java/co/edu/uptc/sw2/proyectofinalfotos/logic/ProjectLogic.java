@@ -23,4 +23,8 @@ public class ProjectLogic {
     public void updateProject(Proyect proyect){
         projectDAO.updateProject(proyect);
     }
+
+    public Proyect getProject(int idProject) {
+        return projectDAO.getProject(idProject);
+    }
 }
