@@ -8,10 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
 @NamedQueries({
+    @NamedQuery(name = "getProject", query = "SELECT p FROM Proyect p WHERE p.idProyect = :idProject")
 })
 public class Proyect implements Serializable {
 
