@@ -11,7 +11,8 @@ import javax.persistence.NamedQuery;
 
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "getPhotos", query = "SELECT p FROM Photo p")
+    @NamedQuery(name = "getPhotos", query = "SELECT p FROM Photo p"),
+    @NamedQuery(name = "getPhotosByStatus", query = "SELECT p FROM Photo p WHERE p.enumStatus = :enumStatus")
 })
 public class Photo implements Serializable {
 
@@ -22,7 +23,6 @@ public class Photo implements Serializable {
     private double requestValue;
     private EnumStatus enumStatus;
     private String path;
-//    @Temporal(TemporalType.DATE)
     private Date date;
 
     public int getIdPhoto() {
