@@ -37,15 +37,23 @@ app.controller("ctrlProjectsViewer", function ($scope, $http) {
     };
 
     $scope.verListFotografias = function (idProject) {
-        $scope.loadPhotos(idProject);
-//        $scope.projects = $scope.company.listProyects;
-//        $scope.photosToShow = [];
-//        for (var i = 0; i < $scope.projects.length; i++) {
-//            if ($scope.projects[i].id === idProject) {
-//                $scope.photos = $scope.projects[i].listPhotos;
-//                break;
-//            }
-//        }
+        $scope.photos = [];
+        $scope.pages = [];
+        $scope.page = [];
+        $http.get("./webresources/PhotoService/" + idProject, {})
+                .then(function (response) {
+                    $scope.photos = response.data;
+                    console.log($scope.photos);
+                    for (var i = 0; i < $scope.photos.length; i++) {
+                        if ($scope.photos[i].enumStatus !== "AVAILABLE") {
+                            $scope.photos[i].path = "imgindex/loading.png";
+                        }
+                    }
+                    $scope.createPages();
+                    $scope.setPage($scope.pageNumber);
+                }, function () {
+                    alert("Error al obtener fotografias");
+                });
         $('#modal1').modal().open();
     };
 
@@ -66,19 +74,7 @@ app.controller("ctrlProjectsViewer", function ($scope, $http) {
     };
 
     $scope.loadPhotos = function (idProject) {
-        $http.get("./webresources/PhotoService/" + idProject, {})
-                .then(function (response) {
-                    $scope.photos = response.data;
-                    for (var i = 0; i < $scope.photos.length; i++) {
-                        if ($scope.photos[i].enumStatus !== "AVAILABLE") {
-                            $scope.photos[i].path = "imgindex/loading.png";
-                        }
-                    }
-                    $scope.createPages();
-                    $scope.setPage($scope.pageNumber);
-                }, function () {
-                    alert("Error al obtener fotografias");
-                });
+        
     };
 
     //abre el modal para subir fotografias
@@ -100,10 +96,8 @@ app.controller("ctrlProjectsViewer", function ($scope, $http) {
     };
 
     $scope.setPage = function (page) {
-        if ($scope.pageNumber !== page) {
-            $scope.pageNumber = page;
-            $scope.photosToShow = $scope.pages[page - 1];
-        }
+        $scope.pageNumber = page;
+        $scope.photosToShow = $scope.pages[page - 1];
     };
 
     $scope.setBackPage = function () {
