@@ -19,9 +19,10 @@ public class BatchProcess {
     @EJB
     private PhotoLogic photoLogic;
 
-    private static final String PATH = "C:\\Users\\asus\\Downloads\\imgProcess\\";
+    private static final String PATH = "C:\\Users\\FREDY\\Documents\\UPTC\\Software II\\PhotosProyect\\src\\main\\webapp\\cacheImages\\";
+    private static final String PATH_RELATIVE = "cacheImages\\";
 
-    @Schedule(minute = "*", hour = "*", second = "0/15", persistent = false)
+    @Schedule(hour = "*", minute = "*", second = "0/20", persistent = false)
     public void searchImages() {
         System.out.println(new Date().getSeconds() + " Voy a buscar imagenes sin procesar...");
         List<Photo> photos = photoLogic.getPhotos(EnumStatus.IN_PROCESS);
@@ -30,10 +31,12 @@ public class BatchProcess {
                 System.out.println("Encontre una foto sin procesar, es: " + photo);
                 String path = photo.getPath();
                 Photographer photographer = photo.getPhotographer();
-                ImageManager.copyImage(path, PATH + new File(path).getName(),
+                String fileName = new File(path).getName();
+                ImageManager.copyImage(path, PATH + fileName,
                         photographer.getName() + " " + photographer.getLastName(),
                         new SimpleDateFormat("yyyy/MM/dd hh:mm:ss").format(photo.getDate()));
                 photo.setEnumStatus(EnumStatus.AVAILABLE);
+                photo.setPath(PATH_RELATIVE + fileName);
                 photoLogic.update(photo);
             } catch (IOException ex) {
                 ex.printStackTrace();

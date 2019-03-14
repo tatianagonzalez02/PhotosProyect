@@ -7,7 +7,7 @@ import javax.imageio.ImageIO;
 
 public class FilesManager {
     
-    public static final String PATH = "C:/Users/asus/Downloads/img/";
+    public static final String PATH = "C:\\Users\\FREDY\\Downloads\\img\\";
  
     public static String saveImage(File image) throws IOException{
         String[] files = new File(PATH).list();
