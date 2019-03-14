@@ -26,6 +26,7 @@ public class CompanyDAO {
         try {
             return entityManager.createNamedQuery("company", Company.class).setParameter("email", email).getSingleResult();
         } catch (Exception e) {
+            System.out.println(" " + e);
             return null;
         }
     }
@@ -38,7 +39,7 @@ public class CompanyDAO {
             query.setParameter("password", password);
             return GSON.toJson(query.getSingleResult());
         } catch (Exception e) {
-            System.out.println("No hay datos");
+            System.out.println("No hay datos" + e);
         }
         return GSON.toJson(ERROR_COMPANY);
     }
