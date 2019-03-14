@@ -25,6 +25,10 @@ public class PhotoLogic {
     public List<Photo> getPhotos(){
         return photoDAO.getPhotos();
     }
+    
+    public List<Photo> getPhotos(int idProject){
+        return projectLogic.getProject(idProject).getListPhotos();
+    }
 
     public List<Photo> getPhotos(EnumStatus enumStatus) {
         return photoDAO.getPhotos(enumStatus);
