@@ -1,6 +1,9 @@
 app.controller("ctrlProyects", function ($scope, $http) {
 
+    $scope.pages = [];
+    $scope.photos = [];
     $scope.company = null;
+    $scope.pageNumber = 1;
     $scope.projects = null;
     $scope.photosToShow = [];
 
@@ -8,15 +11,6 @@ app.controller("ctrlProyects", function ($scope, $http) {
         $http.get("./webresources/CompanyService/" + localStorage.getItem("company"), {})
                 .then(function (response) {
                     $scope.company = response.data;
-                    $scope.projects = $scope.company.listProyects;
-                    for (var i = 0; i < $scope.projects.length; i++) {
-                        $scope.photos = $scope.projects[i].listPhotos;
-                        for (var j = 0; j < $scope.photos.length; j++) {
-                            $scope.date = $scope.photos[j].date;
-                            $scope.photos[j].date = new Date($scope.date.substring(0, $scope.date.length - 5));
-                        }
-                        $scope.projects[i].listPhotos = $scope.photos;
-                    }
                 }, function () {
                     alert("Error al obtener compañias");
                 });
@@ -24,20 +18,62 @@ app.controller("ctrlProyects", function ($scope, $http) {
 
     //    abre el modal donde muestra las fotografias
     $scope.verListFotografias = function (idProject) {
-        $scope.photosToShow = [];
-        for (var i = 0; i < $scope.projects.length; i++) {
-            if ($scope.projects[i].id === idProject) {
-                $scope.photos = $scope.projects[i].listPhotos;
-                for (var i = 0; i < $scope.photos.length; i++) {
-                    if ($scope.photos[i].enumStatus !== "AVAILABLE") {
-                        $scope.photos[i].path = "https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/43b892a2-9859-4905-be03-384c222c1f17/excerpt-lazy-load.png";
+        $scope.photos = [];
+        $scope.pages = [];
+        $scope.page = [];
+        $http.get("./webresources/PhotoService/" + idProject, {})
+                .then(function (response) {
+                    $scope.photos = response.data;
+                    console.log($scope.photos);
+                    for (var i = 0; i < $scope.photos.length; i++) {
+                        if ($scope.photos[i].enumStatus !== "AVAILABLE") {
+                            $scope.photos[i].path = "imgindex/loading.png";
+                        }
+                        $scope.date = $scope.photos[i].date;
+                        $scope.photos[i].date = new Date($scope.date.substring(0, $scope.date.length - 5));
+                        console.log("Fecha: " + $scope.photos[i].date);
                     }
-                    $scope.photosToShow.push($scope.photos[i]);
-                }
-                break;
+                    $scope.createPages();
+                    $scope.setPage($scope.pageNumber);
+                }, function () {
+                    alert("Error al obtener fotografias");
+                });
+        $('#modal2').modal().open();
+    };
+    
+    $scope.createPages = function () {
+        $scope.page = [];
+        $scope.pages = [];
+        for (var i = 0, j = 1; i < $scope.photos.length; i++, j++) {
+            $scope.page.push($scope.photos[i]);
+            if (j === 10) {
+                $scope.pages.push($scope.page);
+                $scope.page = [];
+                j = 0;
             }
         }
-        $('#modal2').modal().open();
+        if ($scope.page.length > 0) {
+            $scope.pages.push($scope.page);
+        }
+    };
+    
+    $scope.setPage = function (page) {
+        $scope.pageNumber = page;
+        $scope.photosToShow = $scope.pages[page - 1];
+    };
+
+    $scope.setBackPage = function () {
+        if ($scope.pageNumber > 1) {
+            $scope.pageNumber--;
+        }
+        $scope.setPage($scope.pageNumber);
+    };
+
+    $scope.setNextPage = function () {
+        if ($scope.pageNumber < $scope.pages.length) {
+            $scope.pageNumber++;
+        }
+        $scope.setPage($scope.pageNumber);
     };
 
     $scope.getCompany();
