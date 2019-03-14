@@ -30,7 +30,7 @@ public class BatchProcess {
 
     private static final String PATH = "C:\\Users\\FREDY\\Downloads\\imgProcess\\";
 
-    @Schedule(minute = "*", hour = "*", second = "0/15", persistent = false)
+//    @Schedule(minute = "*", hour = "*", second = "0/15", persistent = false)
     public void searchImages() {
         System.out.println(new Date().getSeconds() + " Voy a buscar imagenes sin procesar...");
         List<Photo> photos = photoLogic.getPhotos(EnumStatus.IN_PROCESS);

@@ -20,7 +20,7 @@ public class PhotoDAO {
     public List<Photo> getPhotos(){
         return entityManager.createNamedQuery("getPhotos", Photo.class).getResultList();
     }
-
+    
     public List<Photo> getPhotos(EnumStatus enumStatus) {
         return entityManager.createNamedQuery("getPhotosByStatus", Photo.class).setParameter("enumStatus", enumStatus).getResultList();
     }

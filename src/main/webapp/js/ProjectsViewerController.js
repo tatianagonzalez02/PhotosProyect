@@ -1,59 +1,15 @@
 app.controller("ctrlProjectsViewer", function ($scope, $http) {
 
-    $scope.company = null;
-    $scope.chosenProject = null;
-    $scope.photosToShow = [];
-    $scope.photographer = null;
+    $scope.pages = [];
+    $scope.photos = [];
     $scope.newPhoto = {};
+    $scope.company = null;
+    $scope.pageNumber = 1;
+    $scope.photosToShow = [];
+    $scope.chosenProject = null;
+    $scope.photographer = null;
 
-    $scope.getData = function () {
-        $http.get("./webresources/CompanyService/" + localStorage.getItem("viewCompany"), {})
-                .then(function (response) {
-                    $scope.company = response.data;
-                    $scope.projects = $scope.company.listProyects;
-                }, function () {
-                    alert("Error al obtener compañias");
-                });
-    };
-
-    $scope.verListFotografias = function (idProject) {
-        $scope.projects = $scope.company.listProyects;
-        $scope.photosToShow = [];
-        for (var i = 0; i < $scope.projects.length; i++) {
-            if ($scope.projects[i].id === idProject) {
-                $scope.photos = $scope.projects[i].listPhotos;
-                for (var i = 0; i < $scope.photos.length; i++) {
-                    if ($scope.photos[i].enumStatus === "AVAILABLE") {
-                        $scope.photosToShow.push($scope.photos[i]);
-                    } else {
-                        $scope.photosToShow.push({path: "https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/43b892a2-9859-4905-be03-384c222c1f17/excerpt-lazy-load.png"});
-                    }
-                }
-                break;
-            }
-        }
-        $('#modal1').modal().open();
-    };
-
-    //abre el modal para subir fotografias
-    $scope.subirFotografias = function (idProject) {
-        $scope.chosenProject = idProject;
-        $('#modalSubirF').modal().open();
-    };
-
-    $scope.sendPhoto = function () {
-        const input = document.getElementById('inputFileServer');
-        $http.post("./webresources/ProyectService/sendPhoto", input.files[0])
-                .then(function (response) {
-                    $scope.newPhoto.path = response.data;
-                    $scope.updateProyect();
-                    alert("Hemos recibido tu fotografía y la estamos procesando para que sea publicada.");
-                }, function () {
-                    alert("Error al cargar la imagen");
-                });
-    };
-
-    $scope.updateProyect = function () {
+    $scope.addPhoto = function () {
         $scope.projects = $scope.company.listProyects;
         for (var i = 0; i < $scope.projects.length; i++) {
             if ($scope.projects[i].id === $scope.chosenProject) {
@@ -68,6 +24,100 @@ app.controller("ctrlProjectsViewer", function ($scope, $http) {
                 }, function () {
                     alert("Error al actualizar proyecto");
                 });
+    };
+
+    $scope.getData = function () {
+        $http.get("./webresources/CompanyService/" + localStorage.getItem("viewCompany"), {})
+                .then(function (response) {
+                    $scope.company = response.data;
+                    $scope.projects = $scope.company.listProyects;
+                }, function () {
+                    alert("Error al obtener compañias");
+                });
+    };
+
+    $scope.verListFotografias = function (idProject) {
+        $scope.loadPhotos(idProject);
+//        $scope.projects = $scope.company.listProyects;
+//        $scope.photosToShow = [];
+//        for (var i = 0; i < $scope.projects.length; i++) {
+//            if ($scope.projects[i].id === idProject) {
+//                $scope.photos = $scope.projects[i].listPhotos;
+//                break;
+//            }
+//        }
+        $('#modal1').modal().open();
+    };
+
+    $scope.createPages = function () {
+        $scope.page = [];
+        $scope.pages = [];
+        for (var i = 0, j = 1; i < $scope.photos.length; i++, j++) {
+            $scope.page.push($scope.photos[i]);
+            if (j === 10) {
+                $scope.pages.push($scope.page);
+                $scope.page = [];
+                j = 0;
+            }
+        }
+        if ($scope.page.length > 0) {
+            $scope.pages.push($scope.page);
+        }
+    };
+
+    $scope.loadPhotos = function (idProject) {
+        $http.get("./webresources/PhotoService/" + idProject, {})
+                .then(function (response) {
+                    $scope.photos = response.data;
+                    for (var i = 0; i < $scope.photos.length; i++) {
+                        if ($scope.photos[i].enumStatus !== "AVAILABLE") {
+                            $scope.photos[i].path = "imgindex/loading.png";
+                        }
+                    }
+                    $scope.createPages();
+                    $scope.setPage($scope.pageNumber);
+                }, function () {
+                    alert("Error al obtener fotografias");
+                });
+    };
+
+    //abre el modal para subir fotografias
+    $scope.subirFotografias = function (idProject) {
+        $scope.chosenProject = idProject;
+        $('#modalSubirF').modal().open();
+    };
+
+    $scope.sendPhoto = function () {
+        const input = document.getElementById('inputFileServer');
+        $http.post("./webresources/ProyectService/sendPhoto", input.files[0])
+                .then(function (response) {
+                    $scope.newPhoto.path = response.data;
+                    $scope.addPhoto();
+                    alert("Hemos recibido tu fotografía y la estamos procesando para que sea publicada.");
+                }, function () {
+                    alert("Error al cargar la imagen");
+                });
+    };
+
+    $scope.setPage = function (page) {
+        if ($scope.pageNumber !== page) {
+            $scope.pageNumber = page;
+            $scope.photosToShow = $scope.pages[page - 1];
+        }
+    };
+
+    $scope.setBackPage = function () {
+        if ($scope.pageNumber > 1) {
+            $scope.pageNumber--;
+        }
+        $scope.setPage($scope.pageNumber);
+    };
+
+    $scope.setNextPage = function () {
+        if ($scope.pageNumber < $scope.pages.length) {
+            $scope.pageNumber++;
+        }
+        $scope.setPage($scope.pageNumber);
     };
 
     $scope.getData();
