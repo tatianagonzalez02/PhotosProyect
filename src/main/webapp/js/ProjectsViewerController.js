@@ -30,7 +30,6 @@ app.controller("ctrlProjectsViewer", function ($scope, $http) {
         $http.get("./webresources/CompanyService/" + localStorage.getItem("viewCompany"), {})
                 .then(function (response) {
                     $scope.company = response.data;
-                    $scope.projects = $scope.company.listProyects;
                 }, function () {
                     alert("Error al obtener compañias");
                 });
@@ -70,10 +69,6 @@ app.controller("ctrlProjectsViewer", function ($scope, $http) {
         if ($scope.page.length > 0) {
             $scope.pages.push($scope.page);
         }
-    };
-
-    $scope.loadPhotos = function (idProject) {
-        
     };
 
     //abre el modal para subir fotografias
