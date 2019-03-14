@@ -2,6 +2,8 @@ package co.edu.uptc.sw2.proyectofinalfotos.services;
 
 import co.edu.uptc.sw2.proyectofinalfotos.entities.Photo;
 import co.edu.uptc.sw2.proyectofinalfotos.logic.PhotoLogic;
+import co.edu.uptc.sw2.proyectofinalfotos.logic.ProjectLogic;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -18,6 +20,9 @@ public class PhotoService {
     @EJB
     private PhotoLogic photoLogic;
     
+    @EJB
+    private ProjectLogic projectLogic;
+    
     @POST
     @Path("/{idProject}")
     public void addPhoto(@PathParam("idProject") int idProject, Photo photo){
@@ -25,9 +30,8 @@ public class PhotoService {
     }
     
     @GET
-    @Path("/{idProyect})")
-    public boolean getPhotos(@PathParam("idProyect") int idProyect){
-        System.out.println("Buscar fotos del proyecto: " + idProyect);
-        return true;
+    @Path("/{idProject}")
+    public List<Photo> getPhotos(@PathParam("idProject") int idProject){
+        return projectLogic.getProject(idProject).getListPhotos();
     }
 }
