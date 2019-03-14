@@ -87,13 +87,9 @@
 
     <div class="modal-footer ">
         <ul class="pagination center-align">
-            <li class="disabled"><a href=""><i class="material-icons">chevron_left</i></a></li>
-            <li class="active"><a href="">1</a></li>
-            <li class="waves-effect"><a href="">2</a></li>
-            <li class="waves-effect"><a href="">3</a></li>
-            <li class="waves-effect"><a href="">4</a></li>
-            <li class="waves-effect"><a href="">5</a></li>
-            <li class="waves-effect"><a href=""><i class="material-icons">chevron_right</i></a></li>
+            <li class="waves-effect"><a href="" ng-click="setBackPage()" ng-if="pageNumber !== 1"><i class="material-icons">chevron_left</i></a></li>
+            <li class="waves-effect" ng-repeat="page in pages"><a href="" ng-click="setPage($index + 1)">{{$index + 1}}</a></li>
+            <li class="waves-effect"><a href="" ng-click="setNextPage()" ng-if="pageNumber !== pages.length"><i class="material-icons">chevron_right</i></a></li>
         </ul>
         <!--<a href="" class="modal-close waves-effect waves-green btn-flat red white-text">Cerrar</a>-->
     </div>
