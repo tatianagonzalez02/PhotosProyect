@@ -1,5 +1,6 @@
 package co.edu.uptc.sw2.proyectofinalfotos.services;
 
+import co.edu.uptc.sw2.proyectofinalfotos.entities.Photographer;
 import co.edu.uptc.sw2.proyectofinalfotos.logic.PhotographerLogic;
 import javax.ejb.EJB;
 import javax.ws.rs.GET;
@@ -14,7 +15,7 @@ public class PhotographerService {
     
     @GET
     @Path("/{email}")
-    public String getPhotographer(@PathParam("email") String email){
+    public Photographer getPhotographer(@PathParam("email") String email){
         return photographerLogic.getPhotographer(email);
     }
     
