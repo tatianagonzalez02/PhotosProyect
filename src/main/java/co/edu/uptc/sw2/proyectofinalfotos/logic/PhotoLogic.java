@@ -5,6 +5,7 @@ import co.edu.uptc.sw2.proyectofinalfotos.entities.Photo;
 import co.edu.uptc.sw2.proyectofinalfotos.entities.Proyect;
 import co.edu.uptc.sw2.proyectofinalfotos.persistence.PhotoDAO;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -23,7 +24,15 @@ public class PhotoLogic {
     }
     
     public List<Photo> getPhotos(int idProject){
-        return projectLogic.getProject(idProject).getListPhotos();
+        List<Photo> photos = projectLogic.getProject(idProject).getListPhotos();
+        System.out.println("Ordenando");
+        photos.sort(new Comparator<Photo>() {
+            @Override
+            public int compare(Photo photo1, Photo photo2) {
+                return photo2.getDate().compareTo(photo1.getDate());
+            };
+        });
+        return photos;
     }
 
     public List<Photo> getPhotos(EnumStatus enumStatus) {
