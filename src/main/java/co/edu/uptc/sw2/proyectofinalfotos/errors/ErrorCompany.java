@@ -1,4 +1,4 @@
-package errors;
+package co.edu.uptc.sw2.proyectofinalfotos.errors;
 
 public class ErrorCompany {
     

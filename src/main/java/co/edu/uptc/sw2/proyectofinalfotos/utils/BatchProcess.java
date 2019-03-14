@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.uptc.sw2.proyectofinalfotos.utils;
 
 import co.edu.uptc.sw2.proyectofinalfotos.entities.EnumStatus;
@@ -18,19 +13,15 @@ import javax.ejb.EJB;
 import javax.ejb.Schedule;
 import javax.ejb.Stateless;
 
-/**
- *
- * @author FREDY
- */
 @Stateless
 public class BatchProcess {
 
     @EJB
     private PhotoLogic photoLogic;
 
-    private static final String PATH = "C:\\Users\\FREDY\\Downloads\\imgProcess\\";
+    private static final String PATH = "C:\\Users\\asus\\Downloads\\imgProcess\\";
 
-//    @Schedule(minute = "*", hour = "*", second = "0/15", persistent = false)
+    @Schedule(minute = "*", hour = "*", second = "0/15", persistent = false)
     public void searchImages() {
         System.out.println(new Date().getSeconds() + " Voy a buscar imagenes sin procesar...");
         List<Photo> photos = photoLogic.getPhotos(EnumStatus.IN_PROCESS);

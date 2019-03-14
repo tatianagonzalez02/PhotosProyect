@@ -89,6 +89,13 @@
                 <p>Ingrese sus datos</p>
                 <div class="card-content">
                     <div class="form-field">
+                        <i class="material-icons prefix">email</i>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" ng-model="photographer.emailP">
+                        <br>
+                        <input type="button" value="Validar email" ng-click="getPhotographer(photographer.emailP)">
+                        <br>
+                        <br>
                         <i class="material-icons prefix">account_circle</i>
                         <label for="names">Nombres</label>
                         <input type="text" id="names" ng-model="photographer.name">
@@ -96,10 +103,6 @@
                         <i class="material-icons prefix">account_circle</i>
                         <label for="lastName">Apellidos</label>
                         <input type="text" id="lastName" ng-model="photographer.lastName">
-                        <br>
-                        <i class="material-icons prefix">email</i>
-                        <label for="email">Email</label>
-                        <input type="email" id="email" ng-model="photographer.emailP">
                         <br>
                         <i class="material-icons prefix">attach_money</i>
                         <label for="number">Precio</label>

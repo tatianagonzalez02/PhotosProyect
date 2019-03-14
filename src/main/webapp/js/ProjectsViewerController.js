@@ -94,6 +94,18 @@ app.controller("ctrlProjectsViewer", function ($scope, $http) {
                     alert("Error al cargar la imagen");
                 });
     };
+    
+    $scope.getPhotographer = function (emailP) {
+        $http.get("./webresources/PhotographerService/" + emailP, {})
+                .then(function (response) {
+                    console.log(response.data.name);
+                    $scope.photographer.name = response.data.name;
+                    $scope.photographer.lastName = response.data.lastName;
+                }, function () {
+                    alert("Error al obtener el fotógrafo");
+                });
+        $('#modal1').modal().open();
+    };
 
     $scope.setPage = function (page) {
         $scope.pageNumber = page;

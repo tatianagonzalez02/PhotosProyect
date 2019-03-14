@@ -10,10 +10,6 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
-/**
- *
- * @author FREDY
- */
 @Path("PhotoService")
 public class PhotoService {
     

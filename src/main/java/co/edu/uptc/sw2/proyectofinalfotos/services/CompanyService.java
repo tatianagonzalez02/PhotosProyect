@@ -4,7 +4,6 @@ import co.edu.uptc.sw2.proyectofinalfotos.entities.Company;
 import co.edu.uptc.sw2.proyectofinalfotos.entities.Photo;
 import co.edu.uptc.sw2.proyectofinalfotos.entities.Proyect;
 import co.edu.uptc.sw2.proyectofinalfotos.logic.CompanyLogic;
-import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.GET;

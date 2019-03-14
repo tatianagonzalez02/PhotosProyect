@@ -9,10 +9,6 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
-/**
- *
- * @author FREDY
- */
 @Stateless
 public class PhotoLogic {
  

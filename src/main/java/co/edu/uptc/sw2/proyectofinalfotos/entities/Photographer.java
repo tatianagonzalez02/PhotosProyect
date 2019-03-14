@@ -5,8 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQuery(name = "getPhotographer", query = "SELECT p FROM Photographer p WHERE p.emailP = :email")
 public class Photographer implements Serializable {
 
     @Id

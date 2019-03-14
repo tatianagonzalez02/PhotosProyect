@@ -2,7 +2,7 @@ package co.edu.uptc.sw2.proyectofinalfotos.persistence;
 
 import co.edu.uptc.sw2.proyectofinalfotos.entities.Company;
 import com.google.gson.Gson;
-import errors.ErrorCompany;
+import co.edu.uptc.sw2.proyectofinalfotos.errors.ErrorCompany;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
