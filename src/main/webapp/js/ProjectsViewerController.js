@@ -98,7 +98,6 @@ app.controller("ctrlProjectsViewer", function ($scope, $http) {
     $scope.getPhotographer = function (emailP) {
         $http.get("./webresources/PhotographerService/" + emailP, {})
                 .then(function (response) {
-                    console.log(response.data.name);
                     $scope.photographer.name = response.data.name;
                     $scope.photographer.lastName = response.data.lastName;
                 }, function () {
