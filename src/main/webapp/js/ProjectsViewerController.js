@@ -6,8 +6,8 @@ app.controller("ctrlProjectsViewer", function ($scope, $http) {
     $scope.company = null;
     $scope.pageNumber = 1;
     $scope.photosToShow = [];
-    $scope.chosenProject = null;
     $scope.photographer = null;
+    $scope.chosenProject = null;
 
     $scope.addPhoto = function () {
         $scope.projects = $scope.company.listProyects;
@@ -88,12 +88,13 @@ app.controller("ctrlProjectsViewer", function ($scope, $http) {
                     alert("Error al cargar la imagen");
                 });
     };
-    
+
     $scope.getPhotographer = function (emailP) {
         $http.get("./webresources/PhotographerService/" + emailP, {})
                 .then(function (response) {
-                    $scope.photographer.name = response.data.name;
-                    $scope.photographer.lastName = response.data.lastName;
+                    if (response.data !== '') {
+                        $scope.photographer = response.data;
+                    }
                 }, function () {
                     alert("Error al obtener el fotógrafo");
                 });
