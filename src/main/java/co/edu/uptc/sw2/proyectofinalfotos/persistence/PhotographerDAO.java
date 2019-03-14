@@ -16,15 +16,20 @@ public class PhotographerDAO {
     private static final ErrorPhotographer ERROR_PHOTOGRAPHER = new ErrorPhotographer(0, "Datos erroneos");
     private static final Gson GSON = new Gson();
 
-    public String getPhotographer(String email) {
+    public Photographer getPhotographer(String email) {
         try {
-            Query query = entityManager.createNamedQuery("getPhotographer", Photographer.class);
-            query.setParameter("email", email);
-            return GSON.toJson(query.getSingleResult());
+            return entityManager.createNamedQuery("getPhotographer", Photographer.class).setParameter("email", email).getSingleResult();
         } catch (Exception e) {
-            System.out.println("No hay datos" + e);
+            return null;
         }
-        return GSON.toJson(ERROR_PHOTOGRAPHER);
-    }
+//        try {
+//            Query query = entityManager.createNamedQuery("getPhotographer", Photographer.class);
+//            query.setParameter("email", email);
+//            return GSON.toJson(query.getSingleResult());
+//        } catch (Exception e) {
+//            System.out.println("No hay datos" + e);
+//        }
+//        return GSON.toJson(ERROR_PHOTOGRAPHER);
+//    }
 
-}
+}}
