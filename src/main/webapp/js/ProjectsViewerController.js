@@ -52,7 +52,7 @@ app.controller("ctrlProjectsViewer", function ($scope, $http) {
                 }, function () {
                     alert("Error al obtener fotografias");
                 });
-        $('#modal1').modal().open();
+        // Or with jQuery
     };
 
     $scope.createPages = function () {
@@ -119,6 +119,15 @@ app.controller("ctrlProjectsViewer", function ($scope, $http) {
         }
         $scope.setPage($scope.pageNumber);
     };
+    
+    document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.modal');
+            var instances = M.Modal.init(elems, options);
+        });
+        
+    $(document).ready(function () {
+            $('.modal').modal();
+        });
 
     $scope.getData();
 });

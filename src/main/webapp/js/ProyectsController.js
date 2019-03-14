@@ -24,21 +24,18 @@ app.controller("ctrlProyects", function ($scope, $http) {
         $http.get("./webresources/PhotoService/" + idProject, {})
                 .then(function (response) {
                     $scope.photos = response.data;
-                    console.log($scope.photos);
                     for (var i = 0; i < $scope.photos.length; i++) {
                         if ($scope.photos[i].enumStatus !== "AVAILABLE") {
                             $scope.photos[i].path = "imgindex/loading.png";
                         }
                         $scope.date = $scope.photos[i].date;
                         $scope.photos[i].date = new Date($scope.date.substring(0, $scope.date.length - 5));
-                        console.log("Fecha: " + $scope.photos[i].date);
                     }
                     $scope.createPages();
                     $scope.setPage($scope.pageNumber);
                 }, function () {
                     alert("Error al obtener fotografias");
                 });
-        $('#modal2').modal().open();
     };
     
     $scope.createPages = function () {
@@ -75,6 +72,15 @@ app.controller("ctrlProyects", function ($scope, $http) {
         }
         $scope.setPage($scope.pageNumber);
     };
+    
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems, options);
+    });
+
+    $(document).ready(function () {
+        $('.modal').modal();
+    });
 
     $scope.getCompany();
 });
