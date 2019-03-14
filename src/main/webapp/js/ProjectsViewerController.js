@@ -43,7 +43,6 @@ app.controller("ctrlProjectsViewer", function ($scope, $http) {
         $http.get("./webresources/PhotoService/" + idProject, {})
                 .then(function (response) {
                     $scope.photos = response.data;
-                    console.log($scope.photos);
                     for (var i = 0; i < $scope.photos.length; i++) {
                         if ($scope.photos[i].enumStatus !== "AVAILABLE") {
                             $scope.photos[i].path = "imgindex/loading.png";
