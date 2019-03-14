@@ -25,7 +25,6 @@ public class PhotoLogic {
     
     public List<Photo> getPhotos(int idProject){
         List<Photo> photos = projectLogic.getProject(idProject).getListPhotos();
-        System.out.println("Ordenando");
         photos.sort(new Comparator<Photo>() {
             @Override
             public int compare(Photo photo1, Photo photo2) {
