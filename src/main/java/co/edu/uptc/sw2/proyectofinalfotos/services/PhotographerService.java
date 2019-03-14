@@ -14,7 +14,7 @@ public class PhotographerService {
     
     @GET
     @Path("/{email}")
-    public String getCompany(@PathParam("email") String email){
+    public String getPhotographer(@PathParam("email") String email){
         return photographerLogic.getPhotographer(email);
     }
     
