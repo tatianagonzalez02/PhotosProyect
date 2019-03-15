@@ -44,17 +44,4 @@ public class MailsManager {
         Transport.send(message);
     }
     
-//    public static String username = "fredygambaortiz@gmail.com";
-//    public static String password = "ccyosxhexxszfcdo";
-//    String text = "Hola";
-//    String to = "a@a";
-//    String subject = "Prueba";
-
-    public static final void main(String[] args) {
-        try {
-            MailsManager.sendMail("fredygambaortiz@gmail.com", "ccyosxhexxszfcdo", "fredygamba@hotmail.es", "Prueba2", "Esta es la segunda prueba");
-        } catch (MessagingException ex) {
-            ex.printStackTrace();
-        }
-    }
 }
